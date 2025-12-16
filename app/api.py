@@ -12,7 +12,22 @@ def create_app() -> FastAPI:
     settings = get_settings()
     configure_logging(level=settings.log_level)
 
-    app = FastAPI(title="Cargo (GraphQL)")
+    app = FastAPI(
+        title="Cargo Processor (GraphQL)",
+        description=(
+            "Normalizes raw cargo item data (types + items) via a GraphQL mutation. "
+            "Designed to integrate with the storage-calculator backend."
+        ),
+        version="0.1.0",
+        contact={
+            "name": "Cargo Team",
+            "url": "https://github.com/",
+        },
+        license_info={
+            "name": "MIT",
+            "url": "https://opensource.org/licenses/MIT",
+        },
+    )
 
     # CORS
     if settings.allowed_origins:
