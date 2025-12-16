@@ -1,0 +1,19 @@
+[tool.ruff]
+line-length = 120
+target-version = "py314"
+exclude = [
+    ".git",
+    "__pycache__",
+    ".venv",
+]
+
+lint.select = [
+    "E",  # pycodestyle errors
+    "F",  # pyflakes
+    "I",  # isort
+    "UP", # pyupgrade
+]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
