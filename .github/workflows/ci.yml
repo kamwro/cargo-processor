@@ -54,7 +54,7 @@ jobs:
           pip install pytest
       - name: Run unit tests (if any)
         run: |
-          pytest -q || true
+          pytest -q
 
   sbom-scan:
     name: SBOM + Vulnerability Scan (cargo)
