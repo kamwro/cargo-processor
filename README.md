@@ -54,6 +54,50 @@ docker build -t cargo-processor:local .
 docker run -p 8000:8000 --env-file .env cargo-processor:local
 ```
 
+Local tooling (lint, test, build, typecheck, run)
+
+- Install dev tools:
+
+```
+pip install -r requirements-dev.txt
+```
+
+- Lint (Ruff):
+
+```
+python tools/lint.py          # check only
+python tools/lint.py --fix    # auto-fix where safe
+```
+
+- Tests (pytest):
+
+```
+python tools/test.py          # pass flags like: python tools/test.py -q -k name
+```
+
+- Type checking (mypy):
+
+```
+python tools/typecheck.py     # friendly defaults
+python tools/typecheck.py --strict
+```
+
+- Build helpers:
+
+```
+python tools/build.py                 # compile .py -> .pyc (syntax check)
+python tools/build.py --docker        # build Docker image (tag default: cargo-processor:local)
+python tools/build.py --docker --tag your-tag
+```
+
+- Run dev server (uvicorn):
+
+```
+python tools/run.py                   # host=0.0.0.0 port=8000 reload on
+python tools/run.py --host 127.0.0.1 --port 9000 --no-reload
+python tools/run.py --workers 2       # multi-process (reload disabled)
+```
+
 Project structure
 
 ```

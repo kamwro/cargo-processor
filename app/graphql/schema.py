@@ -1,4 +1,4 @@
-from typing import Optional, List, Any
+from typing import Optional, List
 
 import strawberry
 from strawberry.types import Info

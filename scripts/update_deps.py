@@ -1,21 +1,5 @@
 #!/usr/bin/env python3
-"""
-Upgrade or freeze Python dependencies for the cargo service.
-
-Usage:
-  cargo tools/update_deps.py --file requirements.txt            # upgrade each top-level spec to latest and rewrite file
-  cargo tools/update_deps.py --file requirements.txt --freeze-only  # only pin currently installed versions
-
-Behavior:
-- Reads the given requirements file and collects top-level package names
-  (ignores comments, blank lines, and constraint markers).
-- If not --freeze-only, upgrades those names to latest with `pip install -U`.
-- Writes back requirements.txt with exact versions for the original top-level names
-  based on the currently installed environment (via `pip show`).
-
-This script operates on the CURRENT interpreter environment. It's recommended
-to run it inside your virtualenv. See cargo/Makefile targets for convenience.
-"""
+"""Update or freeze deps from a requirements file (default upgrade; use --freeze-only to just pin)."""
 
 from __future__ import annotations
 

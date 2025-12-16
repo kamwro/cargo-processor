@@ -2,8 +2,7 @@
 import os
 import sys
 import json
-import time
-from urllib import request, parse
+from urllib import request
 
 
 BASE_URL = os.environ.get("BACKEND_URL", "http://localhost:3000/api")
