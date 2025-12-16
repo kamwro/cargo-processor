@@ -40,3 +40,23 @@ def test_graphql_normalize_basic():
     assert {t["name"] for t in out["itemTypes"]} == {"Box S", "Box M"}
     assert len(out["items"]) == 2
     assert out["items"][0]["quantity"] >= 0
+
+
+def test_graphql_normalize_empty_payload():
+    c = client()
+    query = (
+        "mutation($src:String!, $p: JSON!){ "
+        "normalize(source:$src, payload:$p){ "
+        "itemTypes{ name unitWeightKg unitVolumeM3 } "
+        "items{ itemTypeName quantity } "
+        "} }"
+    )
+
+    body = {"query": query, "variables": {"src": "test", "p": {}}}
+    r = c.post("/graphql", data=json.dumps(body), headers={"Content-Type": "application/json"})
+    assert r.status_code == 200
+    data = r.json()
+    assert "errors" not in data
+    out = data["data"]["normalize"]
+    assert out["itemTypes"] == []
+    assert out["items"] == []
