@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """Build helper: compile bytecode and optionally build a Docker image (with --docker)."""
+
 from __future__ import annotations
 
 import argparse
@@ -8,13 +9,16 @@ import sys
 from pathlib import Path
 
 
+
 def run(cmd: list[str]) -> int:
     print("$", " ".join(cmd))
     return subprocess.run(cmd).returncode
 
 
+
 def compile_repo() -> int:
     return run([sys.executable, "-m", "compileall", "-q", "."])
+
 
 
 def docker_build(tag: str) -> int:
@@ -24,6 +28,7 @@ def docker_build(tag: str) -> int:
         print("Dockerfile not found; skipping docker build", file=sys.stderr)
         return 0
     return run(["docker", "build", "-t", tag, "."])
+
 
 
 def main() -> int:

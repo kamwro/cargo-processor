@@ -1,10 +1,12 @@
- #!/usr/bin/env python3
+#!/usr/bin/env python3
 """Run mypy type checks (use --strict for stricter mode; supports extra args after --)."""
+
 from __future__ import annotations
 
 import argparse
 import subprocess
 import sys
+
 
 
 def main() -> int:

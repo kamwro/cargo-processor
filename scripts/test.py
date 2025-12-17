@@ -1,9 +1,11 @@
 #!/usr/bin/env python3
 """Run pytest (forwards all extra args)."""
+
 from __future__ import annotations
 
 import subprocess
 import sys
+
 
 
 def main() -> int:
