@@ -1,5 +1,3 @@
-from typing import Optional, List
-
 import strawberry
 from strawberry.types import Info
 
@@ -11,9 +9,9 @@ class ItemTypeIn:
     name: str
     unitWeightKg: float
     unitVolumeM3: float
-    lengthM: Optional[float] = None
-    widthM: Optional[float] = None
-    heightM: Optional[float] = None
+    lengthM: float | None = None
+    widthM: float | None = None
+    heightM: float | None = None
 
 
 @strawberry.input
@@ -27,9 +25,9 @@ class ItemType:
     name: str
     unitWeightKg: float
     unitVolumeM3: float
-    lengthM: Optional[float] = None
-    widthM: Optional[float] = None
-    heightM: Optional[float] = None
+    lengthM: float | None = None
+    widthM: float | None = None
+    heightM: float | None = None
 
 
 @strawberry.type
@@ -40,8 +38,8 @@ class Item:
 
 @strawberry.type
 class NormalizeResult:
-    itemTypes: List[ItemType]
-    items: List[Item]
+    itemTypes: list[ItemType]
+    items: list[Item]
 
 
 @strawberry.type

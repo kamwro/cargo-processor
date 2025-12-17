@@ -4,19 +4,18 @@
 from __future__ import annotations
 
 import argparse
+from collections.abc import Iterable
+from pathlib import Path
 import re
 import subprocess
 import sys
-from pathlib import Path
-from typing import Iterable, List, Set
-
 
 PKG_RE = re.compile(r"^\s*([A-Za-z0-9_.-]+)")
 
 
-def read_top_level_names(req_path: Path) -> List[str]:
-    names: List[str] = []
-    seen: Set[str] = set()
+def read_top_level_names(req_path: Path) -> list[str]:
+    names: list[str] = []
+    seen: set[str] = set()
     for line in req_path.read_text().splitlines():
         s = line.strip()
         if not s or s.startswith("#") or s.startswith("-") or s.startswith("git+"):
@@ -49,7 +48,7 @@ def get_installed_version(name: str) -> str | None:
 
 
 def rewrite_requirements(req_path: Path, names: Iterable[str]) -> None:
-    lines: List[str] = []
+    lines: list[str] = []
     for n in names:
         v = get_installed_version(n)
         if not v:

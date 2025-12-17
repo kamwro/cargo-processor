@@ -1,7 +1,7 @@
 from typing import Any
 
-from .schema import NormalizeResult, ItemType, Item
 from ..services.normalizer import normalize_raw
+from .schema import Item, ItemType, NormalizeResult
 
 
 def normalize_payload(source: str, payload: dict[str, Any]) -> NormalizeResult:

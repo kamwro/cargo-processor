@@ -1,12 +1,12 @@
-from typing import Any, List, Tuple
+from typing import Any
 
 
-def normalize_raw(source: str, raw: dict[str, Any]) -> Tuple[List[dict], List[dict]]:
+def normalize_raw(source: str, raw: dict[str, Any]) -> tuple[list[dict], list[dict]]:
     types_raw = raw.get("types") or []
     items_raw = raw.get("items") or []
 
-    item_types: List[dict] = []
-    items: List[dict] = []
+    item_types: list[dict] = []
+    items: list[dict] = []
 
     for t in types_raw:
         item_types.append(
