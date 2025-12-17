@@ -9,7 +9,6 @@ import subprocess
 import sys
 
 
-
 def main() -> int:
     parser = argparse.ArgumentParser(description="Run uvicorn for local dev")
     parser.add_argument("--host", default=os.environ.get("HOST", "0.0.0.0"))

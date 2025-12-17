@@ -65,37 +65,37 @@ pip install -r requirements-dev.txt
 - Lint (Ruff):
 
 ```
-python tools/lint.py          # check only
-python tools/lint.py --fix    # auto-fix where safe
+python scripts/lint.py          # check only
+python scripts/lint.py --fix    # auto-fix where safe
 ```
 
 - Tests (pytest):
 
 ```
-python tools/test.py          # pass flags like: python tools/test.py -q -k name
+python scripts/test.py          # pass flags like: python tools/test.py -q -k name
 ```
 
 - Type checking (mypy):
 
 ```
-python tools/typecheck.py     # friendly defaults
-python tools/typecheck.py --strict
+python scripts/typecheck.py     # friendly defaults
+python scripts/typecheck.py --strict
 ```
 
 - Build helpers:
 
 ```
-python tools/build.py                 # compile .py -> .pyc (syntax check)
-python tools/build.py --docker        # build Docker image (tag default: cargo-processor:local)
-python tools/build.py --docker --tag your-tag
+python scripts/build.py                 # compile .py -> .pyc (syntax check)
+python scripts/build.py --docker        # build Docker image (tag default: cargo-processor:local)
+python scripts/build.py --docker --tag your-tag
 ```
 
 - Run dev server (uvicorn):
 
 ```
-python tools/run.py                   # host=0.0.0.0 port=8000 reload on
-python tools/run.py --host 127.0.0.1 --port 9000 --no-reload
-python tools/run.py --workers 2       # multi-process (reload disabled)
+python scripts/run.py                   # host=0.0.0.0 port=8000 reload on
+python scripts/run.py --host 127.0.0.1 --port 9000 --no-reload
+python scripts/run.py --workers 2       # multi-process (reload disabled)
 ```
 
 Project structure

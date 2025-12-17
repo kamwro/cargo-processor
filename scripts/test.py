@@ -7,7 +7,6 @@ import subprocess
 import sys
 
 
-
 def main() -> int:
     cmd = [sys.executable, "-m", "pytest", *sys.argv[1:]]
     print("$", " ".join(cmd))

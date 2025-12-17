@@ -9,7 +9,6 @@ import sys
 from pathlib import Path
 
 
-
 def run(cmd: list[str]) -> int:
     print("$", " ".join(cmd))
     return subprocess.run(cmd).returncode

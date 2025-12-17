@@ -8,7 +8,6 @@ import subprocess
 import sys
 
 
-
 def main() -> int:
     parser = argparse.ArgumentParser(description="Run mypy type checks")
     parser.add_argument("paths", nargs="*", default=["."], help="Paths to check (default: .)")

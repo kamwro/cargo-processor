@@ -4,11 +4,11 @@
 from __future__ import annotations
 
 import argparse
-from collections.abc import Iterable
-from pathlib import Path
 import re
 import subprocess
 import sys
+from collections.abc import Iterable
+from pathlib import Path
 
 PKG_RE = re.compile(r"^\s*([A-Za-z0-9_.-]+)")
 

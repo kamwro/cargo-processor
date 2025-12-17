@@ -2,7 +2,6 @@ from fastapi import Depends, Header, HTTPException, status
 
 from .config import get_settings
 
-
 API_KEY_HEADER = "X-Cargo-Api-Key"
 
 

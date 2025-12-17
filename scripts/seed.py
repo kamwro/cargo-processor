@@ -4,7 +4,6 @@ import os
 import sys
 from urllib import request
 
-
 BASE_URL = os.environ.get("BACKEND_URL", "http://localhost:3000/api")
 USERNAME = os.environ.get("SEED_USERNAME", "admin@example.com")
 PASSWORD = os.environ.get("SEED_PASSWORD", "admin1234")
