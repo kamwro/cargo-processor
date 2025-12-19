@@ -27,6 +27,8 @@ testpaths = ["tests"]
 python_version = "3.13"
 # Add project root so `app` package is importable during type checking in CI
 mypy_path = ["."]
+files = ["app"]
+explicit_package_bases = true
 warn_unused_ignores = true
 ignore_missing_imports = false
 strict_optional = true

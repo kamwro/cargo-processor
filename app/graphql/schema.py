@@ -5,7 +5,7 @@ from strawberry.scalars import JSON as JSONScalar
 from strawberry.types import Info
 
 from .resolvers import normalize_payload
-from .types import NormalizeResult
+from app.graphql.types import NormalizeResult
 
 
 @strawberry.input

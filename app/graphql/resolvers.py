@@ -1,7 +1,7 @@
 from typing import Any
 
 from ..services.normalizer import normalize_raw
-from .types import Item, ItemType, NormalizeResult
+from app.graphql.types import Item, ItemType, NormalizeResult
 
 
 def normalize_payload(source: str, payload: dict[str, Any]) -> NormalizeResult:
