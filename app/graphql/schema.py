@@ -1,11 +1,11 @@
-from typing import Any, TYPE_CHECKING, cast
+from typing import TYPE_CHECKING, Any, cast
 
 import strawberry
 from strawberry.scalars import JSON as JSONScalar
 from strawberry.types import Info
 
 from .resolvers import normalize_payload
-from .types import Item, ItemType, NormalizeResult
+from .types import NormalizeResult
 
 
 @strawberry.input
