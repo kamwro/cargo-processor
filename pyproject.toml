@@ -17,3 +17,17 @@ lint.select = [
 [tool.ruff.format]
 quote-style = "double"
 indent-style = "space"
+
+# Ensure local imports work in CI for both pytest and mypy
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
+
+[tool.mypy]
+python_version = "3.13"
+# Add project root so `app` package is importable during type checking in CI
+mypy_path = ["."]
+warn_unused_ignores = true
+ignore_missing_imports = false
+strict_optional = true
+pretty = true
