@@ -3,7 +3,7 @@ Cargo Processor (FastAPI + Strawberry GraphQL)
 This service normalizes raw item data (types + items) via a GraphQL mutation and is designed to integrate with the storage-calculator backend.
 
 Quick start
-- Python 3.14+
+- Python 3.13+
 - Install deps: `pip install -r requirements.txt`
 - Copy env: `cp .env.example .env`
 - Run: `uvicorn main:app --reload --port 8000`
