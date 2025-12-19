@@ -1,4 +1,7 @@
+from typing import Any, Annotated, cast
+
 import strawberry
+from strawberry.scalars import JSON
 from strawberry.types import Info
 
 from .resolvers import normalize_payload
@@ -45,8 +48,17 @@ class NormalizeResult:
 @strawberry.type
 class Mutation:
     @strawberry.mutation
-    def normalize(self, info: Info, source: str, payload: strawberry.scalars.JSON) -> NormalizeResult:
-        return normalize_payload(source=source, payload=payload or {})
+    def normalize(self, info: Info, source: str, payload: Annotated[Any, JSON]) -> NormalizeResult:
+        # mypy: JSON is a runtime scalar (Any); cast to dict for downstream function
+        payload_dict = cast(dict[str, Any], payload or {})
+        return normalize_payload(source=source, payload=payload_dict)
 
 
-schema = strawberry.Schema(mutation=Mutation)
+@strawberry.type
+class Query:
+    @strawberry.field
+    def health(self) -> str:
+        return "ok"
+
+
+schema = strawberry.Schema(query=Query, mutation=Mutation)
