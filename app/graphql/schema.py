@@ -4,32 +4,12 @@ import strawberry
 from strawberry.scalars import JSON as JSONScalar
 from strawberry.types import Info
 
-from app.graphql.types import NormalizeResult
-
+from .types import NormalizeResult
 from .resolvers import normalize_payload
 
 
-@strawberry.input
-class ItemTypeIn:
-    name: str
-    unitWeightKg: float
-    unitVolumeM3: float
-    lengthM: float | None = None
-    widthM: float | None = None
-    heightM: float | None = None
-
-
-@strawberry.input
-class ItemIn:
-    itemTypeName: str
-    quantity: int
-
-
-# Output types are defined in app/graphql/types.py to avoid circular imports
-
 # Use Strawberry's JSON scalar at runtime while keeping type-checkers happy
 if TYPE_CHECKING:
-    # Accept any JSON-like structure at type-check time
     JSONInput = Any
 else:
     JSONInput = JSONScalar

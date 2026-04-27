@@ -2,15 +2,8 @@ import json
 
 from fastapi.testclient import TestClient
 
-from app.api import create_app
 
-
-def client() -> TestClient:
-    return TestClient(create_app())
-
-
-def test_graphql_normalize_basic():
-    c = client()
+def test_graphql_normalize_basic(client: TestClient):
     query = (
         "mutation($src:String!, $p: JSON!){ "
         "normalize(source:$src, payload:$p){ "
@@ -31,20 +24,18 @@ def test_graphql_normalize_basic():
     }
 
     body = {"query": query, "variables": {"src": "test", "p": payload}}
-    r = c.post("/graphql", data=json.dumps(body), headers={"Content-Type": "application/json"})
+    r = client.post("/graphql", data=json.dumps(body), headers={"Content-Type": "application/json"})
     assert r.status_code == 200
     data = r.json()
     assert "errors" not in data
     out = data["data"]["normalize"]
-    # Ensure two types and two items returned with expected fields
     assert len(out["itemTypes"]) == 2
     assert {t["name"] for t in out["itemTypes"]} == {"Box S", "Box M"}
     assert len(out["items"]) == 2
     assert out["items"][0]["quantity"] >= 0
 
 
-def test_graphql_normalize_empty_payload():
-    c = client()
+def test_graphql_normalize_empty_payload(client: TestClient):
     query = (
         "mutation($src:String!, $p: JSON!){ "
         "normalize(source:$src, payload:$p){ "
@@ -54,7 +45,7 @@ def test_graphql_normalize_empty_payload():
     )
 
     body = {"query": query, "variables": {"src": "test", "p": {}}}
-    r = c.post("/graphql", data=json.dumps(body), headers={"Content-Type": "application/json"})
+    r = client.post("/graphql", data=json.dumps(body), headers={"Content-Type": "application/json"})
     assert r.status_code == 200
     data = r.json()
     assert "errors" not in data

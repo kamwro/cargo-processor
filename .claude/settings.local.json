@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python3 -m py_compile app/graphql/schema.py)",
+      "Bash(python3 -c \"import sys; sys.path.insert\\(0, '/c/Users/kamil/WebstormProjects/cargo-processor'\\); from app.graphql.resolvers import normalize_payload\")",
+      "Bash(python3 -c \"from app.graphql.schema import schema; print\\('Import OK'\\)\")",
+      "Bash(py -3 -c \"from app.graphql.schema import schema; print\\('Import OK'\\)\")",
+      "Bash(py -3 scripts/lint.py)",
+      "Bash(where ruff *)",
+      "Bash(where pytest *)",
+      "PowerShell(Get-Command ruff -ErrorAction SilentlyContinue)",
+      "PowerShell(Get-Command pytest -ErrorAction SilentlyContinue)",
+      "PowerShell(Get-Command py -ErrorAction SilentlyContinue)"
+    ]
+  }
+}

@@ -1,6 +1,6 @@
 from typing import Any
 
-from app.graphql.types import Item, ItemType, NormalizeResult
+from .types import Item, ItemType, NormalizeResult
 
 from ..services.normalizer import normalize_raw
 
